@@ -155,5 +155,14 @@ namespace Collei.Lavi.Morph.Core
             return Word.ToLower() == another.Word.ToLower();
         }
 
+        /// <summary>
+        /// Returns its internal representation, i.e., the text contained inside.
+        /// </summary>
+        /// <returns>the same text accessed through the <see cref="Word"/> property.</returns>
+        public override string ToString()
+        {
+            return Word;
+        }
+
     }
 }
