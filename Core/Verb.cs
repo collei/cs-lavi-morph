@@ -97,11 +97,19 @@ namespace Collei.Lavi.Morph.Core
         /// Checks for equality of the textual representation of this instance with another <see cref="Verb"/> instance. Comparison is case insensitive.
         /// </summary>
         /// <param name="verb">Another <see cref="Verb"/> instance to be checked against.</param>
-        /// <returns>True if both instances have the same text, false otherwise.</returns>
-        public bool Equals(Verb verb)
+        /// <returns>True if <paramref name="verb"/> is instance of <see cref="Verb"/> and have the same text, false otherwise.</returns>
+        public override bool Equals(object verb)
         {
-            return this.Word.Equals(verb.Word, System.StringComparison.OrdinalIgnoreCase);
+            Verb another = verb as Verb;
+            //
+            if (another == null)
+            {
+                return false;
+            }
+            //
+            return (Word.ToLower() == another.Word.ToLower()) && (Stem.ToLower() == another.Stem.ToLower());
         }
+
 
     }
 }

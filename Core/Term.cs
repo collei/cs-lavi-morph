@@ -142,10 +142,17 @@ namespace Collei.Lavi.Morph.Core
         /// Checks for equality of this <see cref="Term"/> with the given <paramref name="term"/>. Comparison is case insensitive.
         /// </summary>
         /// <param name="term">Another instance of <see cref="Term"/> to be checked against to.</param>
-        /// <returns>true if both instances carry the same internal string, false otherwise</returns>
-        public bool Equals(Term term)
+        /// <returns>True if <paramref name="term"/> is an instance of <see cref="Term"/> and have the same text, false otherwise.</returns>
+        public override bool Equals(object term)
         {
-            return this.Word.Equals(term.Word, StringComparison.OrdinalIgnoreCase);
+            Term another = term as Term;
+            //
+            if (another == null)
+            {
+                return false;
+            }
+            //
+            return Word.ToLower() == another.Word.ToLower();
         }
 
     }
